@@ -29,6 +29,13 @@ pipeline {
                 }
             }
         }
+        stage('Publishing the reports') {
+            steps {
+                script {
+                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/home/devopsadmin/workspace/SA-Insurance-Project01/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+                }
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
